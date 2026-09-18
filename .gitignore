@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+._*
+
+# Editor / temporary files
+*~
+*.swp
+*.swo
+
+# Development backups
+*.bak
+*.backup
+*.rc-backup
+
+# Logs
+*.log
+
+# Syncthing runtime data
+config/
+*.pid
+
+# Release packages
+*.zip
