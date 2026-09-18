@@ -1,5 +1,7 @@
 # Retro Save Manager (RSM) Steam Deck 版
 
+**[English](README.md) | 简体中文**
+
 Retro Save Manager（RSM）是一套面向 Steam Deck
 的轻量级游戏存档同步方案。
 
@@ -111,6 +113,17 @@ GUI 设置用户名和密码。**
 
 不要主动将 TCP 8384 端口直接暴露到公网。
 
+如果不希望为 Syncthing Web UI 设置用户名和密码，也可以在不需要同步时停止 RSM 服务：
+
+```bash
+systemctl --user stop rsm-syncthing.service
+```
+
+需要再次同步时，可以重新启动服务：
+
+```bash
+systemctl --user start rsm-syncthing.service
+```
 ## 存档同步
 
 RSM 提供的是**文件同步**功能。
@@ -220,17 +233,16 @@ chmod +x uninstall.sh
 
 Syncthing 通常使用以下端口：
 
-  端口    协议   用途
-  ------- ------ ---------------
-  8384    TCP    Web UI
-  22000   TCP    同步通信
-  22000   UDP    QUIC 同步通信
-  21027   UDP    局域网发现
+| 端口 | 协议 | 用途 |
+| --- | --- | --- |
+| 8384 | TCP | Web UI |
+| 22000 | TCP | 同步通信 |
+| 22000 | UDP | QUIC 同步通信 |
+| 21027 | UDP | 局域网发现 |
 
 RSM Installer 会在安装过程中检查这些端口。
 
-如果 TCP 8384 已经被其他程序占用，安装将停止，因为 RSM
-默认使用该端口提供 Syncthing Web UI。
+如果 TCP 8384 已经被其他程序占用，安装将停止，因为 RSM 默认使用该端口提供 Syncthing Web UI。
 
 其他 Syncthing 相关端口发生占用时，Installer 可能显示警告。
 

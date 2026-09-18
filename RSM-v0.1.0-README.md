@@ -1,5 +1,7 @@
 # Retro Save Manager (RSM) for Steam Deck
 
+**English | [简体中文](README-CN.md)**
+
 Retro Save Manager (RSM) is a lightweight save synchronization solution
 for Steam Deck.
 
@@ -111,6 +113,19 @@ Because the Web UI is accessible over the local network, it is strongly
 recommended that you configure a GUI username and password in Syncthing.
 
 Do not intentionally expose port 8384 directly to the public Internet.
+
+If you do not want to configure a username and password for the Syncthing Web UI,
+you can stop the RSM service when synchronization is not needed:
+
+```bash
+systemctl --user stop rsm-syncthing.service
+```
+
+Start it again when synchronization is needed:
+
+```bash
+systemctl --user start rsm-syncthing.service
+```
 
 ## Save Synchronization
 
@@ -231,17 +246,16 @@ retained, including the Syncthing Device ID.
 
 Syncthing normally uses the following ports:
 
-  Port    Protocol   Purpose
-  ------- ---------- -------------------
-  8384    TCP        Web UI
-  22000   TCP        Sync traffic
-  22000   UDP        QUIC sync traffic
-  21027   UDP        Local discovery
+| Port | Protocol | Purpose |
+| --- | --- | --- |
+| 8384 | TCP | Web UI |
+| 22000 | TCP | Sync traffic |
+| 22000 | UDP | QUIC sync traffic |
+| 21027 | UDP | Local discovery |
 
 RSM checks these ports during installation.
 
-A conflict on TCP port 8384 prevents installation because RSM uses this
-port for the Syncthing Web UI.
+A conflict on TCP port 8384 prevents installation because RSM uses this port for the Syncthing Web UI.
 
 Other Syncthing-related port conflicts may be reported as warnings.
 
