@@ -1,6 +1,6 @@
 # Retro Save Manager (RSM) for Steam Deck
 
-**English | [简体中文](README-CN.md)**
+**English | [简体中文](RSM-v0.1.0-README-CN.md)**
 
 Retro Save Manager (RSM) is a lightweight save synchronization solution
 for Steam Deck.
